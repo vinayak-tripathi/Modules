@@ -3,8 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.vscode/
+
 # C extensions
 *.so
+*.exe
 
 # Distribution / packaging
 .Python
@@ -94,12 +97,6 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
@@ -135,6 +132,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+code/
 
 # Spyder project settings
 .spyderproject
@@ -160,9 +158,13 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Exports
+Exports/
+**/IISL*NIFTY*500*bod/
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+# Data/IISL NIFTY 500 bod/IISL20241015.csv

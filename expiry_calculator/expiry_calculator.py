@@ -91,16 +91,16 @@ class ExpiryCalculator:
         expiry_df["Month"] = expiry_df['Date'].dt.month_name()
         expiry_df['DayName'] = expiry_df['Date'].dt.day_name()
 
+        expiry_df['Year'] = expiry_df['Date'].dt.year
         expiry_df['WeekOfMonth'] = expiry_df['Date'].apply(lambda x: (x.day - 1) // 7 + 1)
         
-        last_expiry_per_month = expiry_df.groupby('Month')['WeekOfMonth'].transform("max")
+        last_expiry_per_month = expiry_df.groupby(['Month','Year','ExpiryDay'])['Date'].apply(np.max).values
 
         # Assign <WeekNum>W for weekly expiries and 'M' for monthly expiry (last one in the month)
         expiry_df['ExpiryType'] = expiry_df['WeekOfMonth'].astype(str) + 'W'
-        expiry_df.loc[expiry_df['WeekOfMonth'] == last_expiry_per_month, 'ExpiryType'] = 'M'
-        expiry_df.drop(['WeekOfMonth'],  axis=1, inplace=True)
+        expiry_df.loc[expiry_df['Date'].isin(last_expiry_per_month), 'ExpiryType'] = 'M'
+        expiry_df.drop(['WeekOfMonth','Year'],  axis=1, inplace=True)
         
-
         return expiry_df  
     
     def get_monthly_expiry_dates(self):

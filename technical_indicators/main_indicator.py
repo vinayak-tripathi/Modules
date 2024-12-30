@@ -1,7 +1,7 @@
 import pandas as pd
-from .indicators.bollinger import BollingerBands
-from .indicators.macd import MACDSignal
-from .indicators.rsi import RSISignal
+from .indicators import BollingerBands
+from .indicators import MACDSignal
+from .indicators import RSISignal
 
 class MainIndicator:
     def __init__(self, data: pd.DataFrame):
